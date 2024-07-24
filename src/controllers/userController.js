@@ -9,7 +9,6 @@ const authenticateUser = async (req, res) => {
     if (!user) {
       user = await prisma.user.create({ data: { email, name } });
     }
-    console.log(user);
     const token = generateToken(user.uuid);
     res.json({ token, userId: user.uuid });
   } catch (error) {
